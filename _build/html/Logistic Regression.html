@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>A Hands-on Workshop series in Machine Learning &#8212; A Hands-on Workshop series in Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Logistic Regression';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="A Hands-on Workshop series in Machine Learning" href="A%20Gentle%20Introduction%20to%20Neural%20Networks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Workshop details
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="A%20Gentle%20Introduction%20to%20Neural%20Networks.html">A Hands-on Workshop series in Machine Learning</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">A Hands-on Workshop series in Machine Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FLogistic Regression.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Logistic Regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A Hands-on Workshop series in Machine Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-3-classification-algorithms">Session 3: Classification Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-dr-aashita-kesarwani">Instructor: Dr. Aashita Kesarwani</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-boundary">Decision boundary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-classifier">Logistic classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation-of-logistic-classifier">Formulation of logistic classifier:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustration-using-iris-dataset">Illustration using Iris dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-loss-or-cost-of-classification">Formulating Loss or Cost of Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-loss-cost-function-also-known-as-cross-entropy-loss-function">Log-loss cost function (also known as cross-entropy loss function)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradients">Gradients</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-gradients">What are gradients?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-algorithm">Gradient Descent Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-and-underfitting-to-the-curve">Overfitting and Underfitting to the curve</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-aways-so-far">Key take-aways so far:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="a-hands-on-workshop-series-in-machine-learning">
+<h1>A Hands-on Workshop series in Machine Learning<a class="headerlink" href="#a-hands-on-workshop-series-in-machine-learning" title="Permalink to this headline">#</a></h1>
+<section id="session-3-classification-algorithms">
+<h2>Session 3: Classification Algorithms<a class="headerlink" href="#session-3-classification-algorithms" title="Permalink to this headline">#</a></h2>
+<section id="instructor-dr-aashita-kesarwani">
+<h3>Instructor: Dr. Aashita Kesarwani<a class="headerlink" href="#instructor-dr-aashita-kesarwani" title="Permalink to this headline">#</a></h3>
+<p>This is one of the notebooks for the <a class="reference external" href="http://www.aashitak.com/A-Hands-on-Workshop-series-in-Machine-Learning/">Machine Learning workshop series at Harvey Mudd College</a>. It involves a gentle introduction of logistic regression algorithm.</p>
+</section>
+</section>
+<section id="classification">
+<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h2>
+<p><strong>What is machine learning?</strong></p>
+<ul class="simple">
+<li><p>Learning from data without explicit programming by using algorithms.</p></li>
+</ul>
+<p>Classification is one of the most basic task for machine learning algorithms yet have many widespread applications. It involves predicting classes for the data points.</p>
+<p>Data for training a classifier consists of pairs (input, output) or <span class="math notranslate nohighlight">\((X, y)\)</span> where <span class="math notranslate nohighlight">\(y\)</span> is the class/label for the example <span class="math notranslate nohighlight">\(X\)</span>. For example,</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input X</p></th>
+<th class="head"><p>Output y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Emails</p></td>
+<td><p>Classes: Spam or not</p></td>
+</tr>
+<tr class="row-odd"><td><p>Photos</p></td>
+<td><p>Classes: cats, dogs, birds, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>A tweet</p></td>
+<td><p>Classes: positive or negative sentiment</p></td>
+</tr>
+<tr class="row-odd"><td><p>Medical history for patients</p></td>
+<td><p>Classes: at risk or not for a disease</p></td>
+</tr>
+<tr class="row-even"><td><p>Voter information</p></td>
+<td><p>Classes: likely to cast vote for democratic or republican candidate</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Can you think of more examples that can be modeled as a classification task?</p></li>
+<li><p>What about the titantic dataset where we had information about passengers and whether they survived the tragedy?</p></li>
+</ul>
+<p><strong>Training:</strong><br />
+In machine learning models, we use training data to build a model that can be used for future unseen data. For examples, we can use a training set of emails that are labeled to indicate whether they are spam or not and then use that model for filtering out spam emails.</p>
+<p><strong>Classification</strong>:
+Predicting classes for the data points.</p>
+<p>Data points are the examples in our dataset, for example each passenger in the titanic dataset that corresponded to a row in the dataframe. We always prepare our dataset so that each example is converted to a vector in <span class="math notranslate nohighlight">\(n\)</span>-dimensional space, where <span class="math notranslate nohighlight">\(n\)</span> is the number of input variables. We will see in the later sections how to process and convert texts, images, etc. into numerical vectors.</p>
+<section id="decision-boundary">
+<h3>Decision boundary<a class="headerlink" href="#decision-boundary" title="Permalink to this headline">#</a></h3>
+<p>Decision boundary seperates the classes. We use labeled training data to determine the decision boundary and then use it to determine the labels for the unseen data.</p>
+<p>An example of the decision boundary for binary classification algorithm:</p>
+<img src="https://drive.google.com/uc?id=12wk2U5JGo7LiemIDxHPvyikoyodCvNF4" width="600" height="350" /></section>
+</section>
+<section id="logistic-classifier">
+<h2>Logistic classifier<a class="headerlink" href="#logistic-classifier" title="Permalink to this headline">#</a></h2>
+<p>The logistic classifier, also known by its misnomer logistic regression, is one of the simplest cases of the neural networks pared-down to a single layer.</p>
+<img src="https://camo.githubusercontent.com/f663cd4f29335972950dded4d422c07aeee8af55/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a34473067737539327250684e2d636f397076315035414032782e706e67" width="400" height="350"/>
+<p>The decision boundary in logistic classifier is linear.</p>
+<section id="formulation-of-logistic-classifier">
+<h3>Formulation of logistic classifier:<a class="headerlink" href="#formulation-of-logistic-classifier" title="Permalink to this headline">#</a></h3>
+<p>For binary classification, we assign labels to the two classes.</p>
+<ul class="simple">
+<li><p>positive class: label 1</p></li>
+<li><p>negative class: label 0</p></li>
+</ul>
+<p>We want our classifier to predict the probabilities corresponding to each class, instead of the class label. Can you guess why?</p>
+<p>A: The examples farther from the decision boundary should be classified with more certainity (or higher probability) than those closer to the decision boundary.</p>
+<ul class="simple">
+<li><p>The classifier predicts the probability (<span class="math notranslate nohighlight">\(p\)</span>) that an observation belongs to the positive class.</p></li>
+<li><p>The probability for the class labeled <span class="math notranslate nohighlight">\(0\)</span> (or the negative class) would be <span class="math notranslate nohighlight">\(1-p\)</span>.</p></li>
+</ul>
+<p>Q: How do we mathematically quantify the distance of a point from the decision boundary?</p>
+<p>To answer that, let us first clearly formulate the classification model:</p>
+<ul class="simple">
+<li><p>Our training set consists of pairs, say (input, target) where the target is the class label - <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p>Let there be <span class="math notranslate nohighlight">\(n\)</span> features in our dataset, then each input can be considered a point <span class="math notranslate nohighlight">\((x_1, x_2, \dots, x_n)\)</span> in the <span class="math notranslate nohighlight">\(n\)</span>-dimensional space.</p></li>
+</ul>
+<p>The classification task is to find the optimal decision boundary to separate the classes. For the logistic regression, this boundary is linear.</p>
+<ul class="simple">
+<li><p>For the case of two features, this linear boundary is simply a line in 2-dimensional plane.</p></li>
+<li><p>For three features, the linear boundary would be a linear plane separating the two classes in 3-dimensional plane.</p></li>
+<li><p>In general, the linear boundary is a <span class="math notranslate nohighlight">\(n-1\)</span> dimensional linear hyperplane in a <span class="math notranslate nohighlight">\(n\)</span>-dimensional space.</p></li>
+</ul>
+<img src="https://camo.githubusercontent.com/f663cd4f29335972950dded4d422c07aeee8af55/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a34473067737539327250684e2d636f397076315035414032782e706e67" width="300" height="350" />
+<p style="text-align: center;"> Logistic Regression classifier </p><p>To be able to visualize and understand intuitively, let us use only two features, say <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>. Let us assume the following line <span class="math notranslate nohighlight">\(x_1-x_2-1=0\)</span> is the linear decision boundary for the logistic classifier in the figure above.</p>
+<p><img alt="" src="https://github.com/AashitaK/ML-Workshops/blob/master/Session%204/figures/fig1.png?raw=true" /></p>
+<p>Math question: How do we mathematically represent the two regions that are separated by this line <span class="math notranslate nohighlight">\(x_1-x_2-1=0\)</span>?</p>
+<p>The region containing the origin is given by <span class="math notranslate nohighlight">\(x_1-x_2-1&lt;0\)</span> whereas the other one by <span class="math notranslate nohighlight">\(x_1-x_2-1&gt;0\)</span>.</p>
+<p><img alt="" src="https://github.com/AashitaK/ML-Workshops/blob/master/Session%204/figures/fig2.png?raw=true" /></p>
+<p>The expression <span class="math notranslate nohighlight">\(x_1-x_2-1\)</span> have values higher in magnitude for points away from the line and lower values for points closer to the line.</p>
+<p><img alt="" src="https://github.com/AashitaK/ML-Workshops/blob/master/Session%204/figures/figure3.png?raw=true" /></p>
+<p>To summarize in a nutshell, the expression <span class="math notranslate nohighlight">\(w_1*x_1 + w_2*x_2 + \cdots + w_n*x_n + b\)</span> can be used to quantify how close a point is to the decision boundary and if use we combine it with a suitable function, it can give us the probability for the positive class. The <strong>sigmoid logistic function</strong> is used for this purpose as follows:</p>
+<div class="math notranslate nohighlight">
+\[p = Prob(y=1) = sig(w_1*x_1 + w_2*x_2 + \cdots + w_n*x_n + b) \]</div>
+<p>where <span class="math notranslate nohighlight">\(sig\)</span> is the sigmoid logistic function
+$<span class="math notranslate nohighlight">\(sig(t) = \frac{1}{1+e^{-t}}\)</span>$</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Sigmoid-function-2.svg" width=400 />
+<p>The S-shaped curve is called sigmoid because of its shape and it is widely used in population growth models and hence, the <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_function">name logistic</a>.</p>
+<p><em><strong>Observations:</strong></em></p>
+<ul class="simple">
+<li><p>The output of the sigmoid lies between 0 and 1, which corresponds to the probability in our case.</p></li>
+<li><p>The logistic function (and hence the probability) approximates to 1 for large positive values, whereas it converges to 0 for large negative values.</p></li>
+<li><p>The value for <span class="math notranslate nohighlight">\(w_1*x_1 + w_2*x_2 + \cdots + w_n*x_n + b\)</span> is positive for points in the region on one side of the line and negative for the other. The magnitude of the values (positive or negative) is higher for points far away from the line.</p></li>
+<li><p>In view of the above equation for logistic regression and the properties of sigmoid logistic function, the points farther away from the line will be classified with a high probability to one class or the other, whereas the probability will be closer to 0 for points close to the line.</p></li>
+</ul>
+<p>In general, we set the threshold for probability to be 0.5. This means:</p>
+<ul class="simple">
+<li><p>Whenever <span class="math notranslate nohighlight">\(w_1*x_1 + w_2*x_2 + \cdots + w_n*x_n + b \geq 0\)</span>, it is classified to the positive class</p></li>
+<li><p>Whenever <span class="math notranslate nohighlight">\(w_1*x_1 + \cdots + w_n*x_n + b &lt; 0\)</span>, it is classified to the negative class.</p></li>
+<li><p>The points for which the value for <span class="math notranslate nohighlight">\(w_1*x_1 + \cdots + w_n*x_n + b\)</span> is not large in magnitude have probabilities that are closer to 0.5. Such points needs to be classified with extra care, as we will see later on in evaluation metrics.</p></li>
+</ul>
+<p>To learn a good decision boundary, we need to <strong>find optimal weights</strong>. How can we make use of our training data for that purpose?</p>
+</section>
+</section>
+<section id="illustration-using-iris-dataset">
+<h2>Illustration using Iris dataset<a class="headerlink" href="#illustration-using-iris-dataset" title="Permalink to this headline">#</a></h2>
+<p>The iris dataset is a classic dataset used in machine learning. It consists of iris flowers that fall into three species (setosa, virginica, and versicolor) with four measurements for each flower. Here, we eliminated one of the classes to make it a binary classification problem.</p>
+<p>Let us use an example for illustration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us plot the petal length vs the petal width for two classes of iris flowers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;petal width (cm)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/30ceeb6376fd35bdf03513f0ddd10a756a6984cf8d03e5c5480ead8ee3b0250e.png" src="_images/30ceeb6376fd35bdf03513f0ddd10a756a6984cf8d03e5c5480ead8ee3b0250e.png" />
+</div>
+</div>
+<p>Let us try to draw linear decision boundaries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_line</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+    <span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">y_values</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">x_values</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">y_values</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+    
+<span class="n">plot_line</span><span class="p">(</span><span class="n">w</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">2.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">);</span>
+<span class="n">plot_line</span><span class="p">(</span><span class="n">w</span><span class="o">=-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">7.45</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g-&#39;</span><span class="p">);</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;petal length (cm)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;petal width (cm)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f7aba12422d877f9cdaf46aedcc4cd015aab4295590c82dcd0cb6a0db552b47e.png" src="_images/f7aba12422d877f9cdaf46aedcc4cd015aab4295590c82dcd0cb6a0db552b47e.png" />
+</div>
+</div>
+<p>Which of the above two lines - red or green is a better decision boundary?</p>
+</section>
+<section id="formulating-loss-or-cost-of-classification">
+<h2>Formulating Loss or Cost of Classification<a class="headerlink" href="#formulating-loss-or-cost-of-classification" title="Permalink to this headline">#</a></h2>
+<p>To learn a good decision boundary, we need to make use of our training data for <strong>finding the optimal values for the slope and intercept for the decision boundary line</strong>. But first, how do we mathematically measure the “goodness” of a decision boundary?</p>
+<p>For the following two examples,</p>
+<ul class="simple">
+<li><p>Which of the below two lines - red or green is a better decision boundary?</p></li>
+<li><p>How do we decide that? What metrices should we use to guide that decision?</p></li>
+<li><p>Should we only consider what percentage of points are correctly classified? If not, what else?</p></li>
+</ul>
+<img align="left" src="https://drive.google.com/uc?id=10gU1VISNTFjn2KFuZo_DTz_WKFNFCvn5" width=400>
+<img align="center" src="https://drive.google.com/uc?id=1fCof_PfbM_VNXFf1NHE9ToObSKotrYEa" width=400>
+<p>For calculating the loss or cost of classification, we should aim for:</p>
+<ul class="simple">
+<li><p>classifying the points correctly</p></li>
+<li><p>maximizing the distance of correctly classified points from the decision boundary</p></li>
+</ul>
+<p>Our network outputs the probability which carries information about the distance of points from the decision boundary. We use the log loss function, also known as cross-entropy function, defined below to quantify the loss or cost function.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(p\)</span> is the probability that the data point belongs to the positive class with label <span class="math notranslate nohighlight">\(1\)</span>.<br />
+For points with label <span class="math notranslate nohighlight">\(y=1\)</span>, the cost is</p>
+<div class="math notranslate nohighlight">
+\[ c(y, p) = - \log(p) \ \ \ \ \ \ \ \ \ \text{ if }\ \  y = 1\]</div>
+<p>whereas for points with label <span class="math notranslate nohighlight">\(y=0\)</span>, the cost is</p>
+<div class="math notranslate nohighlight">
+\[ c(y, p) = - \log(1-p) \ \  \text{ if }\ \  y = 0\]</div>
+<p>Recall that:
+$<span class="math notranslate nohighlight">\(\lim_{p \to 1} \log(p) = 0 \quad \text{ and } \quad \lim_{p \to 0} \log(p) = -\infty\)</span>$</p>
+<img align="left" src="https://github.com/AashitaK/ML-Workshops/blob/master/Session%204/figures/log.png?raw=true" width=350 height=350>
+<img align="center"  src="https://github.com/AashitaK/ML-Workshops/blob/master/Session%204/figures/logloss.png?raw=true" width=350 height=350>
+<br/> <br/>
+<p>Observations:<br />
+For data point with the true class <span class="math notranslate nohighlight">\(y=1\)</span></p>
+<ul class="simple">
+<li><p>As the predicted probability <span class="math notranslate nohighlight">\(p \to 1\)</span>, the cost <span class="math notranslate nohighlight">\(c \to 0\)</span>.</p></li>
+<li><p>As the predicted probability <span class="math notranslate nohighlight">\(p \to 0\)</span>, the cost <span class="math notranslate nohighlight">\(c \to \infty\)</span>.</p></li>
+</ul>
+<p>For data point with the true class <span class="math notranslate nohighlight">\(y=0\)</span></p>
+<ul class="simple">
+<li><p>As the predicted probability <span class="math notranslate nohighlight">\(p \to 0\)</span>, the cost <span class="math notranslate nohighlight">\(c \to 0\)</span>.</p></li>
+<li><p>As the predicted probability <span class="math notranslate nohighlight">\(p \to 1\)</span>, the cost <span class="math notranslate nohighlight">\(c \to \infty\)</span>.</p></li>
+</ul>
+<section id="log-loss-cost-function-also-known-as-cross-entropy-loss-function">
+<h3>Log-loss cost function (also known as cross-entropy loss function)<a class="headerlink" href="#log-loss-cost-function-also-known-as-cross-entropy-loss-function" title="Permalink to this headline">#</a></h3>
+<p>The cost (also known as loss function) function takes the average over the costs for all points. The costs for the two classes <span class="math notranslate nohighlight">\(y=0\)</span> and <span class="math notranslate nohighlight">\(y=1\)</span> can be summed up in the following formula.</p>
+<div class="math notranslate nohighlight">
+\[ J = \frac{1}{N} \sum_{i=1}^N c(y, p) = - \frac{1}{N} \sum_{i=1}^N \left(y \log(p) + (1-y) \log(1-p)\right) \]</div>
+<p>where <span class="math notranslate nohighlight">\(p=Prob(y=1)\)</span>, which is the output of our logistic regression classifier.</p>
+<p>The cost function <span class="math notranslate nohighlight">\(J\)</span> is consequently a function of the weights <span class="math notranslate nohighlight">\(w_1, w_2, \dots, w_n\)</span> and the bias term <span class="math notranslate nohighlight">\(b\)</span>, that is <span class="math notranslate nohighlight">\(J(w_1, w_2, \dots, w_n, b)\)</span>. Can you see how?</p>
+<p>Note that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are given to us and hence, are constants when it comes to training whereas the weights and the biases are the variables for which we will find the optimal values.</p>
+<p>The cost function  <span class="math notranslate nohighlight">\(J\)</span> is something we want to minimize. How do we find the minima for a multivariate function <span class="math notranslate nohighlight">\(J\)</span>? Suppose <span class="math notranslate nohighlight">\(J\)</span> is a function of a single variable <span class="math notranslate nohighlight">\(w\)</span>, how would you solve it?</p>
+<p>To answer that, let us digress a little bit.</p>
+</section>
+</section>
+<section id="gradients">
+<h2>Gradients<a class="headerlink" href="#gradients" title="Permalink to this headline">#</a></h2>
+<p>Suppose you are standing at the top of a hill and want to descend to the plain. If you do not have any specific destination in mind, but want to take the least number of steps to reach the plain, what would be your <strong>strategy for each step on your way</strong>?</p>
+<p>Have you noticed the paths followed by the creeks along the mountains?</p>
+<p>Ans: You pick the direction of the steepest descent at each step.</p>
+<p>Let us formulate this optimization strategy in mathematical terms.</p>
+<p>Q: Given a curve represented by a function <span class="math notranslate nohighlight">\(J(w)\)</span>, how do you get the slope of the curve at each point?</p>
+<p>Q: Given a curve represented by a multi-variable function <span class="math notranslate nohighlight">\(J(w_1, w_2, \dots, w_n, b)\)</span>, how do you get the slope of the curve at each point?</p>
+<section id="what-are-gradients">
+<h3>What are gradients?<a class="headerlink" href="#what-are-gradients" title="Permalink to this headline">#</a></h3>
+<p>Gradients can be thought of as an extension of derivatives. For a multivariable function <span class="math notranslate nohighlight">\(f\)</span>, the <a class="reference external" href="https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/partial-derivative-and-gradient-articles/a/the-gradient">gradient</a> of <span class="math notranslate nohighlight">\(f\)</span> is the vector of partial derivatives.</p>
+<div class="math notranslate nohighlight">
+\[ \nabla f(x_1, x_2, \dots, x_n) = \left(\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \dots, \frac{\partial f}{\partial x_n} \right)\]</div>
+<p>Geometrically, the gradient points in the direction of the steepest slope.</p>
+<p><strong>Questions to ponder over:</strong></p>
+<ul class="simple">
+<li><p>If we move in the direction of steepest descent, are we always guaranteed to reach the minimum point?</p></li>
+<li><p>If the answer is no to the above questions, are there any cases for the function <span class="math notranslate nohighlight">\(J\)</span> for which reaching the minima is guaranteed?</p></li>
+</ul>
+<p>Neural networks also use the gradient descent algorithm for the training process and we will come back to this question in a later session.</p>
+</section>
+</section>
+<section id="gradient-descent-algorithm">
+<h2>Gradient Descent Algorithm<a class="headerlink" href="#gradient-descent-algorithm" title="Permalink to this headline">#</a></h2>
+<p>Gradient Descent algorithm is used to iteratively update the weights using the training examples so as to minimize the cost function <span class="math notranslate nohighlight">\(J\)</span>.</p>
+<p>The weights are updated in the direction of the steepest descent of the cost function <span class="math notranslate nohighlight">\(J\)</span> in each iteration.</p>
+<div class="math notranslate nohighlight">
+\[ w := w - \alpha \nabla J \]</div>
+<p>where <span class="math notranslate nohighlight">\(\nabla J\)</span> is the gradient of the cost function <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate that determines the size of steps that we take descending on the path of gradient.</p>
+<img align="center"  src="https://drive.google.com/uc?id=1K1Ki-VizvgPK88QKCQapedHItBQd8WHr" width="350" height="200" />
+<p style="text-align: center;"> Minimizing the cost function using gradient descent </p> <p>In a nutshell, the learning process can be summarized as iteratively updating the weights using the training data to keep on <em><strong>minimizing the cost function</strong></em>. The gist of the learning process for the neural network is the same, though the formulation of the cost function and the equation for calculating <span class="math notranslate nohighlight">\(y\)</span> for a given <span class="math notranslate nohighlight">\(x\)</span> will vary a lot depending on the architecture of the neural network.</p>
+</section>
+<section id="overfitting-and-underfitting-to-the-curve">
+<h2>Overfitting and Underfitting to the curve<a class="headerlink" href="#overfitting-and-underfitting-to-the-curve" title="Permalink to this headline">#</a></h2>
+<p>Three classifiers A, B and C are trained on a given labeled dataset. The accuracy of the trained classifiers in predicting the labels correctly on the same dataset is as follows.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Models</p></th>
+<th class="head"><p>Accuracy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Model A</p></td>
+<td><p>90%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Model B</p></td>
+<td><p>80%</p></td>
+</tr>
+<tr class="row-even"><td><p>Model C</p></td>
+<td><p>70%</p></td>
+</tr>
+</tbody>
+</table>
+<p>Clearly, model A is better at predicting labels for the training data than model B and C. Do you think model A will do a better job in predicting labels for yet unseen data as well?</p>
+<p><em><strong>When should we stop the iterative learning process? Until the cost function has reached its minimum value?</strong></em></p>
+<p>To answer the question, let us consider this binary classification problem with two variables (features).
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Overfitting.svg" width="250" height="250" /></p>
+<ul class="simple">
+<li><p>Which of the two decision boundaries (black or green) will have a lower value for the cost function?</p></li>
+<li><p>Which decision boundary would you prefer for classifying the unseen examples?</p></li>
+</ul>
+<p>Since the cost function is calculated solely based on the training dataset, minimizing it too much might mean that the network does not generalize well to unseen examples. This is called overfitting.</p>
+<img src="http://fouryears.eu/wp-content/uploads/2017/12/early_stopping.png" width=400 />
+<p><em><strong>Over-fitting and under-fitting to the training set</strong></em><br />
+The models can over-train on a dataset, that is they learn the dataset so well that they do not generalize well to the examples outside of that dataset.</p>
+<p>If we try to fit too complex of a curve as the decision boundary separating the classes and we don’t have enough training examples to estimate the parameters for the curve, then we suffer from over-fitting.</p>
+<p>On the other hand, if we try separating the classes with an over-simplified curve as the decision boundary and we have enough training examples to estimate a curve that would be a better fit, then we suffer from under-fitting.</p>
+<img align="center" src="https://drive.google.com/uc?id=1xXgAtcmB8pJB04OaJWR8tOxSBedfziO2" width="600" height="300" />
+<p>How do we know whether our model is overfitting or underfitting to the training set?</p>
+<p>Answer: At the beginning, we save some examples as the validation set and use it to test the performance of the model.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Models</p></th>
+<th class="head"><p>Accuracy on the training set</p></th>
+<th class="head"><p>Accuracy on the validation set</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Model A</p></td>
+<td><p>90%</p></td>
+<td><p>70%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Model B</p></td>
+<td><p>80%</p></td>
+<td><p>75%</p></td>
+</tr>
+<tr class="row-even"><td><p>Model C</p></td>
+<td><p>70%</p></td>
+<td><p>65%</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>With this additional information, can you guess which model will likely perform better for the unseen data?</p></li>
+<li><p>Which of these three models would you suspect for overfitting to the training data?</p></li>
+<li><p>Which of these three models would you suspect for underfitting to the training data?</p></li>
+</ul>
+<section id="key-take-aways-so-far">
+<h3>Key take-aways so far:<a class="headerlink" href="#key-take-aways-so-far" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Always save some examples from the datasets for testing model performance.</p></li>
+<li><p>Pay attention to the model performance on the validation set rather than solely on the training set.</p></li>
+<li><p>Watch out for both under-fitting and over-fitting.</p></li>
+</ul>
+<p>Now we demonstrate how to use the built-in Logistic classifier from the scikit-learn module for the iris dataset seen above. Let us split the dataset into training and validation sets for the cross validation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="c1"># default is 75% / 25% train-test split</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We create a logistic classifier using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"><code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.LogisticRegression</span></code></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">LR_clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we train the classifier using the training data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LR_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression()</pre></div></div></div></div></div></div></div>
+</div>
+<p>Now, we test the accuracy of the classifier on both training and validation dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy of Logistic regression classifier on training set: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span>
+     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">LR_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy of Logistic regression classifier on validation set: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span>
+     <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">LR_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of Logistic regression classifier on training set: 0.96
+Accuracy of Logistic regression classifier on validation set: 0.92
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements:<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<p>The credits for the images used above are as follows.</p>
+<ul class="simple">
+<li><p>Image 1 and 2: <a class="github reference external" href="https://github.com/trekhleb/machine-learning-octave/tree/master/logistic-regression">trekhleb/machine-learning-octave</a></p></li>
+<li><p>Image 6: <a class="reference external" href="https://towardsdatascience.com/derivative-of-the-sigmoid-function-536880cf918e">https://towardsdatascience.com/derivative-of-the-sigmoid-function-536880cf918e</a></p></li>
+<li><p>Image 9: <a class="reference external" href="https://rasbt.github.io/mlxtend/user_guide/general_concepts/gradient-optimization/">https://rasbt.github.io/mlxtend/user_guide/general_concepts/gradient-optimization/</a></p></li>
+<li><p>Image 10: <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Overfitting.svg">https://commons.wikimedia.org/wiki/File:Overfitting.svg</a></p></li>
+<li><p>Image 11: <a class="reference external" href="https://vitalflux.com/wp-content/uploads/2015/02/fittings.jpg">https://vitalflux.com/wp-content/uploads/2015/02/fittings.jpg</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="A%20Gentle%20Introduction%20to%20Neural%20Networks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">A Hands-on Workshop series in Machine Learning</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-3-classification-algorithms">Session 3: Classification Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-dr-aashita-kesarwani">Instructor: Dr. Aashita Kesarwani</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-boundary">Decision boundary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-classifier">Logistic classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation-of-logistic-classifier">Formulation of logistic classifier:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustration-using-iris-dataset">Illustration using Iris dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-loss-or-cost-of-classification">Formulating Loss or Cost of Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-loss-cost-function-also-known-as-cross-entropy-loss-function">Log-loss cost function (also known as cross-entropy loss function)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradients">Gradients</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-gradients">What are gradients?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-algorithm">Gradient Descent Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-and-underfitting-to-the-curve">Overfitting and Underfitting to the curve</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-aways-so-far">Key take-aways so far:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aashita Kesarwani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

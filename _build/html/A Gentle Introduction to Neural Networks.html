@@ -1,0 +1,983 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>A Hands-on Workshop series in Machine Learning &#8212; A Hands-on Workshop series in Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'A Gentle Introduction to Neural Networks';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="A Hands-on Workshop series in Machine Learning" href="Logistic%20Regression.html" />
+    <link rel="prev" title="Workshop details" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Workshop details
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">A Hands-on Workshop series in Machine Learning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Logistic%20Regression.html">A Hands-on Workshop series in Machine Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FA Gentle Introduction to Neural Networks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/A Gentle Introduction to Neural Networks.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A Hands-on Workshop series in Machine Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Hands-on Workshop series in Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-gentle-introduction-to-neural-networks">A Gentle Introduction to Neural Networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-dr-aashita-kesarwani">Instructor: Dr. Aashita Kesarwani</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-linear-regression">Multivariate Linear Regression</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-propagation">Forward propagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-propagation">Backward propagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-address-overfitting">How to address overfitting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements:</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="a-hands-on-workshop-series-in-machine-learning">
+<h1>A Hands-on Workshop series in Machine Learning<a class="headerlink" href="#a-hands-on-workshop-series-in-machine-learning" title="Permalink to this headline">#</a></h1>
+<section id="a-gentle-introduction-to-neural-networks">
+<h2>A Gentle Introduction to Neural Networks<a class="headerlink" href="#a-gentle-introduction-to-neural-networks" title="Permalink to this headline">#</a></h2>
+<section id="instructor-dr-aashita-kesarwani">
+<h3>Instructor: Dr. Aashita Kesarwani<a class="headerlink" href="#instructor-dr-aashita-kesarwani" title="Permalink to this headline">#</a></h3>
+<p>What is Deep Learning?</p>
+<p>Why the sudden growth in the applications of Deep Learning?</p>
+<ol class="arabic simple">
+<li><p>Data availability</p></li>
+<li><p>Computing power</p></li>
+</ol>
+<center>
+<img src="https://cdn-images-1.medium.com/max/1600/0*GTzatEUd4cICPVub." width="600" />
+</center>
+<p>Data may consists of pairs (input, output).</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Photos</p></td>
+<td><p>Label: cats, dogs, birds, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Emails</p></td>
+<td><p>Label: Spam or not</p></td>
+</tr>
+<tr class="row-even"><td><p>House characteristics</p></td>
+<td><p>House prices</p></td>
+</tr>
+<tr class="row-odd"><td><p>A sentence in English</p></td>
+<td><p>Its translation in Spanish</p></td>
+</tr>
+</tbody>
+</table>
+<p>The first step is to convert the real world entity, such as an email, image or other data, into feature vectors.</p>
+<p>Let us assume for the rest of the session that our training data is already pre-processed and converted into feature vectors. For <span class="math notranslate nohighlight">\(n\)</span> features, a feature vector is nothing but a point in the <span class="math notranslate nohighlight">\(n\)</span>-dimensional space viz. <span class="math notranslate nohighlight">\(x = (x_1, x_2, \dots, x_n)\)</span>.</p>
+<p>For supervised machine learning algorithm, the goal is to best estimate the mapping function <span class="math notranslate nohighlight">\(f\)</span> for the output variable <span class="math notranslate nohighlight">\(y\)</span> given the input data <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>There are two major tasks for supervised machine learning:</p>
+<ul class="simple">
+<li><p>Classification</p></li>
+<li><p>Regression</p></li>
+</ul>
+<p>We have studied some binary classification algorithms in the previous two sessions, for which the output variable <span class="math notranslate nohighlight">\(y\)</span> is one of the classes - 0 or 1 for the input data <span class="math notranslate nohighlight">\(X\)</span>. Let us start with our first regression algorithm in today’s session.</p>
+</section>
+<section id="regression">
+<h3>Regression:<a class="headerlink" href="#regression" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Fitting a curve to determine the impact of feature variables on the target variable.</p></li>
+</ul>
+<center>
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Gaussian_kernel_regression.png" width="300" />
+<p style="text-align: center;"> Regression curve </p> 
+</center><p>Linear Regression: Fitting a <em><strong>line</strong></em> to determine the impact of feature variables on the target variable.</p>
+<center>
+<img align="center" src="https://drive.google.com/uc?id=1DRuci3HIlZMBGfYkYSNpgUh_48gmjesl" width=400 />
+</center>
+<p>Note that <span class="math notranslate nohighlight">\(X\)</span> consists of independent variables, whereas <span class="math notranslate nohighlight">\(y\)</span> target ouput and we want to approximate a function <span class="math notranslate nohighlight">\(f: X \to y\)</span></p>
+<p>For example, let <span class="math notranslate nohighlight">\(x\)</span> be the square feet area of the house and <span class="math notranslate nohighlight">\(y\)</span> be the selling price of the house.</p>
+<p><strong>Can we use a Multi-Layer Perceptron network to be used for regression? If yes, what will change as compared to the previous one used for binary classification?</strong></p>
+<center>
+<img align="center" src="https://drive.google.com/uc?id=1wMVjwS3AsJCfkh-iuIq4MEycUV9yqKuD" width=400 />
+</center><ul class="simple">
+<li><p>Which one of the above two lines is a better fit? Red or Green?</p></li>
+<li><p>Can there be an even better fit? How do we find out?</p></li>
+<li><p>What precisely are we looking for in the line that is the best fit?</p></li>
+</ul>
+<p>Answer: We are trying to minimize the error in predictions given by the line vs the actual target value.</p>
+<center>
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Residuals_for_Linear_Regression_Fit.png" width="400" />
+</center>
+<p>The simple linear regression (linear regression with one variable) is formulated as <span class="math notranslate nohighlight">\( y_{pred} = w * x + b \)</span>.</p>
+<p>Finding the best fit line simply means <em><strong>finding the optimal values for <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span></strong></em>. For that, we need to quantify the cost function (also known as the error function or the loss function) that we can minimize.</p>
+<ul class="simple">
+<li><p>How do we formulate the cost function?</p></li>
+<li><p>Should we sum up the errors? If not, why?</p></li>
+</ul>
+<p>The simple linear regression model uses the mean-squared error (MSE) as the cost function. We square the errors and then take their average.</p>
+<div class="math notranslate nohighlight">
+\[ J = \frac{1}{2 n} \sum_{i=1}^n (y^{(i)} - y_{pred}^{(i)})^2 \]</div>
+<p>Alternatively, we can use Mean-absolute Error (MSE) as the cost function for regression:
+$<span class="math notranslate nohighlight">\( J = \frac{1}{n} \sum_{i=1}^n |y^{(i)} - y_{pred}^{(i)}| \)</span>$</p>
+<p>The cost function is inherently a function of the slope and intercept. This is evident once we substitute <span class="math notranslate nohighlight">\(y_{pred}\)</span> with the regression line.</p>
+<div class="math notranslate nohighlight">
+\[ J(w, b) = \frac{1}{2 n} \sum_{i=1}^n (y^{(i)} - (w * x^{(i)} + b) )^2 \]</div>
+<p>The <a class="reference external" href="https://machinelearningmastery.com/gradient-descent-for-machine-learning/">gradient descent algorithm</a>, introduced in the last session, can then be used to minimize the above cost function by updating the weights iteratively.</p>
+<p>Revision: How does the gradient descent algorithm work?</p>
+<ul class="simple">
+<li><p>We start with some weights initially</p></li>
+<li><p>Let the model make prediction <span class="math notranslate nohighlight">\(y_{pred}\)</span> for a training example <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p>Compute the cost using the prediction <span class="math notranslate nohighlight">\(y_{pred}\)</span> and the actual target <span class="math notranslate nohighlight">\(y\)</span></p></li>
+<li><p>Compute the gradient of the cost and use it to update the weights</p></li>
+<li><p>Repeat the above steps for another training example</p></li>
+</ul>
+<p>The weights are updated in the direction of the steepest descent of the cost function in each iteration.</p>
+<div class="math notranslate nohighlight">
+\[ w := w - \alpha \nabla J \]</div>
+<p>where <span class="math notranslate nohighlight">\(\nabla J\)</span> is the gradient of the cost function <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate that determines the size of steps that we take descending on the path of gradient.</p>
+<center>
+<img align="center"  src="https://drive.google.com/uc?id=1K1Ki-VizvgPK88QKCQapedHItBQd8WHr" width="450" />
+<p style="text-align: center;"> Minimizing the cost function using gradient descent </p> 
+</center>
+<p>To derive the formula for updating weights using gradient descent, we first take the partial derivative,
+$<span class="math notranslate nohighlight">\( \frac{\partial J}{\partial w} = - \frac{1}{n} \sum_{i=1}^n (y^{(i)} - y_{pred}^{(i)})   \ x^{(i)} \)</span><span class="math notranslate nohighlight">\(
+And substitute it in the above equation to get
+\)</span><span class="math notranslate nohighlight">\( w := w + \alpha \frac{1}{n} \sum_{i=1}^n (y^{(i)} - y_{pred}^{(i)})   \ x^{(i)} \)</span><span class="math notranslate nohighlight">\(
+Similarly,
+\)</span><span class="math notranslate nohighlight">\( b := b + \alpha \frac{1}{n} \sum_{i=1}^n (y^{(i)} - y_{pred}^{(i)})   \)</span>$</p>
+<p>To summarize, <em>we defined a cost function to quantify the error in predicting outputs and then we update the weights so as to minimize the cost in the fastest way with the help of gradient descent algorithm</em>.</p>
+<p>In the other notebook titled <em>Linear regression implementation using gradient descent</em>, the above gradient descent algorithm is implemented so that the regression line is being updated iteratively and the cost is declining with every iteration.</p>
+<center>
+<img align="center" src="https://drive.google.com/uc?id=1MjPa-pioGFZ_Wpz38qzYbBlVpDdg1p0P" width=700 />
+<img align="center" src="https://drive.google.com/uc?id=1QWTVQxzgLL0oqYNcjz1j44JZGKGoS37S" width=500 />
+</center>
+<p><strong>Exercise</strong>: If you were to implement the above algorithm, what major functions would you need to implement? What would the code look like for the iterative process of weight updates?</p>
+<p>You can use <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> implementation of the linear regression as demonstrated below while working on problems. The linear regression is often good as a baseline model, and this implementation is fast and require very little code.</p>
+<p>First we import the function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">LinearRegression</a> and then initialize the regressor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_boston.csv&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we train the regressor using the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">fit()</span></code></a> method on the data points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we plot the regression line using the functions written in the python file <code class="docutils literal notranslate"><span class="pre">linreg.py</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">X</span> <span class="o">+</span> <span class="n">b</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">J</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">intercept_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Weight:&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cost:&quot;</span><span class="p">,</span> <span class="n">cost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># Plot the regression line</span>
+<span class="n">X_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y_prediction</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">X_values</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_values</span><span class="p">,</span> <span class="n">y_prediction</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Average number of rooms&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Median value of homes in $1000’s&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fitting a linear regression model&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multivariate-linear-regression">
+<h3>Multivariate Linear Regression<a class="headerlink" href="#multivariate-linear-regression" title="Permalink to this headline">#</a></h3>
+<p>The same formulation and understanding can be extended to linear regression with more than one variable, say <span class="math notranslate nohighlight">\(x_1, x_2, \dots, x_n\)</span>, with the equation</p>
+<div class="math notranslate nohighlight">
+\[ y_{pred} = b + w_1 * x_1 + w_2 * x_2 + \cdots + w_n * x_n\]</div>
+<p>And we estimate the weights <span class="math notranslate nohighlight">\(w_1, w_2, \dots, w_n\)</span> corresponding to each variable as well as the intercept.</p>
+<p> </p>
+<p> </p>
+<p>Linear regression is the simplest example of a neural network with no hidden layers.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1IRSgCzpyrpvX5nk7k8vDP0VGGZko8kgL" width="450">
+<p style="text-align: center;"> Neural network representation for regression </p> 
+</center><p>Notes:</p>
+<ul class="simple">
+<li><p>Increasing the weight for a variable means it is becoming more impactful in the prediction.</p></li>
+<li><p>The weights for two variables cannot be compared straightway unless they are in same scale or are normalized to be in the same scale.</p></li>
+</ul>
+<p>Though linear regression has a simple network architecture, it serves as a good demonstration for the learning process for the neural network.</p>
+<ul class="simple">
+<li><p>We define the cost function to quantify the error in prediction, which is effectively a function of weights and bias term.</p></li>
+<li><p>We use a dataset to learn the optimal weights of the network. We call it the training dataset.</p></li>
+<li><p>Minimizing the cost function using the training data yields the desired weights. The gradient descent algorithm is used for this learning process.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="classification">
+<h1>Classification:<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h1>
+<p>Machine learning approach to classification task:
+We are given some labeled data which we use to determine the decision boundary. Then, we use this decision boundary to classify the yet unseen examples into the given categories.</p>
+<center>
+<img src="https://camo.githubusercontent.com/f663cd4f29335972950dded4d422c07aeee8af55/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a34473067737539327250684e2d636f397076315035414032782e706e67" width="300" />
+</center>
+<p>For simplicity, let us assume we have only two classes:</p>
+<ul class="simple">
+<li><p>the positive class labeled as 1</p></li>
+<li><p>the negative class labeled as 0</p></li>
+</ul>
+<p>Can we somehow modify the neural network architecture we studied earlier for linear regression to build a binary classifier?
+\</p>
+<center>
+<img src="https://drive.google.com/uc?id=1IRSgCzpyrpvX5nk7k8vDP0VGGZko8kgL" width="450">
+<p style="text-align: center;"> Neural network representation for linear regression </p> 
+</center>
+<p><br />
+<br />
+Simplest but outdated trick was to use the threshold to get the neuron fired or not.
+\</p>
+<center>
+<img src="https://cdn-images-1.medium.com/max/2600/1*v88ySSMr7JLaIBjwr4chTw.jpeg" width="500" />
+<p style="text-align: center;"> A Perceptron Classifier</p>
+</center>
+<p>The bias term let us set a threshold so that if the weighted input sum is greater than 0, then the neuron fires or else it does not. When the neuron fires, we classify the example as belonging to the positive class, otherwise the negative class.</p>
+<p>The function that was used to determine whether the neuron fires or not is called the activation function. Note that it is the unit step function.</p>
+<p>\begin{equation} \label{eq1}
+\begin{split}
+f(x) &amp; = 1 \text{ if } w_1<em>x_1 + w_2</em>x_2 + \cdots + w_n*x_n + b \geq 0\<br />
+&amp; = 0 \text{ otherwise}
+\end{split}
+\end{equation}</p>
+<p><em><strong>Exercise 1:</strong></em></p>
+<p>Q1: Can you come up with a neural network for the OR gate by trail-and-error?
+<br/>
+<img align="left" src="https://drive.google.com/uc?id=14kAMLNmAa_VRZEw6aALXQ1eFuTlse6rt"/>
+<img align="center" src="https://drive.google.com/uc?id=1_PJv8NeVZbemhCBS3e8iM3hLgniDCP_o" width="410" /></p>
+<p>Hint:</p>
+<ul class="simple">
+<li><p>Step 1: How many input nodes should we have? Do not forget the bias term.</p></li>
+<li><p>Step 2: Sketch the neural network and put the variables with names on it, such as <span class="math notranslate nohighlight">\(x_1, x_2, b, w_1, w_2\)</span>, etc.</p></li>
+<li><p>Step 3: Come up with some values for the weight and bias that will give the correct prediction for one of the points.</p></li>
+<li><p>Step 4: Update the weight and bias term, if necessary, to give correct predictions for another point as well as the previous one(s). Repeat for the remaining point(s).
+<br/></p></li>
+</ul>
+<p>Note: You do not need to find the most optimal weights (and consequently the best decision bounadry line). Any weights that correctly classifies the four points will do!</p>
+<p>Q2: Can you come up with a neural network for the AND gate?
+<br/>
+<img align="left" src="https://drive.google.com/uc?id=1ewB3gdZZUSw3B8CxBza8EGj-ffMIAffa" />
+<img align="center" src="https://drive.google.com/uc?id=1wK1pokVCcpARtJk6NQQpayEiy44Bm7mI" width="410" />
+<br/></p>
+<center>
+<img align="center" src="https://drive.google.com/uc?id=1mDyw_mwHch-oKWac9K2NNMFvtScmWEey" width="600" /> 
+</center>
+<p>Q3: Would a similar network work for the XOR gate?
+<br/>
+<img align="left" src="https://drive.google.com/uc?id=1zdlTFiFPoNMSh7wuv9CjnriQpfdVDwE0" />
+<img align="center" src="https://drive.google.com/uc?id=1eejQDuWSzGkdHAdYABbd_NDAT8A1zj13" width="410" /></p>
+<p>The single-layer neural network that we used for the OR and AND gates can only give us a linear boundary. It is evident that it is simply not possible for a linear decision boundary to correctly classify all the points in XOR gate.</p>
+<p>It is pretty common for real-life classification problems to have non-linear decision boundaries. That is why we add hidden layers to the neural networks. The layers other than the input and output layers in the network are called hidden layers. Deep Learning typically means that the network is pretty deep (many hidden layers!).</p>
+<center>
+<img src="https://www.researchgate.net/profile/Mohamed_Zahran6/publication/303875065/figure/fig4/AS:371118507610123@1465492955561/A-hypothetical-example-of-Multilayer-Perceptron-Network.png" width="450"/>
+<p style="text-align: center;"> Multi-layer Perceptron </p>
+</center>
+<p><em><strong>Exercise 2:</strong></em>
+Can you now come up with a neural network for the XOR gate?</p>
+<p>Hint: XOR gate is equivalent to combining NAND (negative of AND) gate and OR gate with a AND gate. Can you fill in the weights for the XOR gate network? Use <a class="reference external" href="https://jamboard.google.com/d/1yadCM1E_QF37uxcqd8Hhfz_05s1Dyc1rGdExayBQ5CM/edit?usp=sharing">jamboard here</a> if you’d like.</p>
+<img align="left" src="https://drive.google.com/uc?id=1Y_fV5rwkYUgbAmTOHRWHHv5fiQRON4Bi"/><p>See <a class="reference external" href="https://drive.google.com/file/d/1k2enUhtaktvZ7OCdSp2o9oWqTiKN62i_/view?usp=sharing">solution here</a> for the XOR gate network.</p>
+<p>The neural networks for classification we have seen so far outputs the class label for each input example.</p>
+<p>In general, we want to classify the examples farther from the decision boundary with more certainity (or higher probability) than those closer to the decision boundary.  Hence, we want our classifier to give us the probabilities corresponding to each class, instead of the class label itself.</p>
+<p>We have seen an example of a binary classification algorithm called Logistic Regression classifier, that separates the classes using Linear boundary.</p>
+<center>
+<img src="https://camo.githubusercontent.com/f663cd4f29335972950dded4d422c07aeee8af55/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f313630302f312a34473067737539327250684e2d636f397076315035414032782e706e67" width="300" />
+<p style="text-align: center;"> Logistic Regression classifier </p>
+</center>
+<p>The Logistic regression model is given by,</p>
+<div class="math notranslate nohighlight">
+\[Prob(y=1) = sig(w_1*x_1 + w_2*x_2 + \cdots + w_n*x_n + b) \]</div>
+<p>where <span class="math notranslate nohighlight">\(sig\)</span> is the sigmoid logistic function</p>
+<div class="math notranslate nohighlight">
+\[sig(t) = \frac{1}{1+e^{-t}}\]</div>
+<center>
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Sigmoid-function-2.svg" width=400 />
+</center>
+<p>The inspiration for our first neural network was the linear regression above.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1IRSgCzpyrpvX5nk7k8vDP0VGGZko8kgL" width="400">
+<p style="text-align: center;"> Neural network representation for linear regression </p> 
+</center>
+<p>Can we also represent the logistic classifier, that also contains the weighted sum <span class="math notranslate nohighlight">\(w_1*x_1 + w_2*x_2 + \cdots + w_n*x_n + b\)</span> in its equation, as a neural network?</p>
+<p>A: Yes, we simply add a layer for the sigmoid sum.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1nO8rVZYSjaLONOCHavdSDuc-mt2ZtcXN" width="450">
+<p style="text-align: center;"> Neural network representation for logistic classifier </p> 
+</center>
+<p>It is called activation function. We will come back to other examples. One way to introduce non-linearity was the addition of hidden layer as seen above. The activation functions themselves also add non-linearity. For the logistic regression, we used the sigmoid function at the end. For neural networks, it is common to use activation function for each layer.</p>
+<p>Let us formalize the neural networks introduced so far. There are two parts to the learning process:</p>
+<ol class="arabic simple">
+<li><p>Forward propagation: used to predict the output by propagating the input in the forward direction</p></li>
+<li><p>Backward propagation: used to compute the weight updates for each layer by propagating the cost/error in the backward direction.</p></li>
+</ol>
+<section id="forward-propagation">
+<h2>Forward propagation<a class="headerlink" href="#forward-propagation" title="Permalink to this headline">#</a></h2>
+<p>The process of propagating the output of each layer in the forward direction to consequently get the final output is called forward propagation.</p>
+<p>The output of each hidden layer becomes the input of the next layer. The output is also called the activation for a layer.</p>
+<p>The output/activation for each layer is computed in two steps:</p>
+<ul class="simple">
+<li><p>The weighted sum of the inputs, say <span class="math notranslate nohighlight">\(z_i\)</span></p></li>
+<li><p>The activation function is applied to the above sum <span class="math notranslate nohighlight">\(z_i\)</span> to produce the activation <span class="math notranslate nohighlight">\(a_i\)</span></p></li>
+</ul>
+<p>Equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+z_1 &amp;= x*W_1+b_1 \\
+a_1 &amp;= g_1(z_1) \\
+z_2 &amp;= a_1*W_2+b_2 \\
+a_2 &amp;= g_2(z_2) \\
+\vdots \\
+z_n &amp;= a_{n-1}*W_n+b_n \\
+a_n &amp;= g_n(z_n) \\
+\end{align}
+\end{split}\]</div>
+<p>and so on till the final output <span class="math notranslate nohighlight">\(y_{pred} = a_n\)</span>.</p>
+<p>Convention:<br />
+<span class="math notranslate nohighlight">\(z_i\)</span>: weighted averages of the output from the <span class="math notranslate nohighlight">\((i-1)^{th}\)</span> layer<br />
+<span class="math notranslate nohighlight">\(a_i\)</span>: activation/output of the <span class="math notranslate nohighlight">\(i^{th}\)</span> layer<br />
+<span class="math notranslate nohighlight">\(g_i\)</span>: activation layer of the <span class="math notranslate nohighlight">\(i^{th}\)</span> layer<br />
+<span class="math notranslate nohighlight">\(W_i\)</span>: Weight matrices connecting two layers<br />
+<span class="math notranslate nohighlight">\(b_i\)</span>: Bias vector for the <span class="math notranslate nohighlight">\(i\)</span>-th layer<br />
+<span class="math notranslate nohighlight">\(m\)</span>: Number of training examples</p>
+<center>
+<img src="https://www.researchgate.net/profile/Mohamed_Zahran6/publication/303875065/figure/fig4/AS:371118507610123@1465492955561/A-hypothetical-example-of-Multilayer-Perceptron-Network.png" width="350" />
+</center>
+</section>
+<section id="backward-propagation">
+<h2>Backward propagation<a class="headerlink" href="#backward-propagation" title="Permalink to this headline">#</a></h2>
+<p>The process of propagating the cost in the backward direction to compute the gradients for each layer so as to update the weights and bias is called backward propagation.</p>
+<p>Equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+W_n &amp;:= W_n - \frac{1}{m}\alpha*\frac{\partial J}{\partial W_n}\\    
+b_n &amp;:= b_n - \frac{1}{m}\alpha*\frac{\partial J}{\partial b_n}\\
+ \vdots \\
+W_1 &amp;:= W_1 - \frac{1}{m}\alpha*\frac{\partial J}{\partial W_1}\\   
+b_1 &amp;:= b_1 - \frac{1}{m}\alpha*\frac{\partial J}{\partial b_1}\\
+\end{align}
+\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate that is multiplied to the gradients to tune the size of each weight/bias update.</p>
+<p>The gradients are computed using the chain rule for derivatives, as illustrated below in the exercise example.</p>
+<p>One pass of each forward and backward propagation is called an iteration. When all the training examples are iterated once, it is called an epoch.</p>
+<p><em><strong>Exercise 3:</strong></em>
+In the above exercise, we came up with the weights for the neural network for the OR gate by trial-and-error method. Let us derive the <strong>back propagation equations</strong> so that we can find optimal weights for the network starting with random weights.</p>
+<p><img alt="" src="https://miro.medium.com/max/1113/0*wOYoifz24Wz_I152." /></p>
+<p>The forward propagation equations will be:<br />
+<span class="math notranslate nohighlight">\( z_1 = w_1 x_1 + w_2 x_2 + b\)</span><br />
+<span class="math notranslate nohighlight">\( a_1 = g(z_1) \)</span><br />
+<span class="math notranslate nohighlight">\( y_{pred} = a_1 \)</span></p>
+<p>Let the activation function be sigmoid</p>
+<div class="math notranslate nohighlight">
+\[ g(z) = \frac{1}{1+e^{-z}} \]</div>
+<p>Let the cost function be $<span class="math notranslate nohighlight">\( J = \frac{1}{2} \sum_{i=1}^4 (y^{(i)} - y_{pred}^{(i)})^2 \)</span>$</p>
+<p>Derive the Back propagation equations by calculating the gradients (partial derivatives):</p>
+<div class="math notranslate nohighlight">
+\[ w_1 := w_1 - \alpha \frac{\partial J}{\partial w_1} \]</div>
+<div class="math notranslate nohighlight">
+\[ w_2 := w_2 - \alpha \frac{\partial J}{\partial w_2} \]</div>
+<div class="math notranslate nohighlight">
+\[ b := b - \alpha \frac{\partial J}{\partial b} \]</div>
+<p>Hint: Use the chain rule for derivatives</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d f(y)}{dx} =  \frac{d f(y)}{dy} \frac{d y}{dx}\]</div>
+</section>
+<section id="summary">
+<h2>Summary:<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>Let us summarize what we have learned so far.</p>
+<p>Terminology:</p>
+<ul class="simple">
+<li><p>Nodes</p></li>
+<li><p>Input layer</p></li>
+<li><p>Hidden layers</p></li>
+<li><p>Output layer</p></li>
+<li><p>Weights</p></li>
+<li><p>Bias</p></li>
+<li><p>Weighted sum <span class="math notranslate nohighlight">\(z_i\)</span></p></li>
+<li><p>Activation functions <span class="math notranslate nohighlight">\(g_i\)</span></p></li>
+<li><p>Activations <span class="math notranslate nohighlight">\(a_i\)</span></p></li>
+<li><p>Cost function <span class="math notranslate nohighlight">\(J\)</span></p></li>
+<li><p>Forward propagation</p></li>
+<li><p>Backward propagation</p></li>
+<li><p>Iterations</p></li>
+<li><p>Epochs</p></li>
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+</ul>
+</section>
+<section id="how-to-address-overfitting">
+<h2>How to address overfitting?<a class="headerlink" href="#how-to-address-overfitting" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Reduce the number of features</p>
+<ul>
+<li><p>Discard some features</p></li>
+<li><p>Dimensionality reduction techniques such PCA, LDA, etc.</p></li>
+</ul>
+</li>
+<li><p>Simplify the model (by tuning hyperparameters)</p></li>
+<li><p>Reducing the number of epochs for training the network</p></li>
+<li><p>Regularization, Dropout, etc.</p></li>
+<li><p>Adding more training examples, if possible</p></li>
+</ul>
+<center>
+<img src="https://i.stack.imgur.com/rpqa6.jpg" width="500"/>
+</center>
+<p>In a nutshell,</p>
+<ul class="simple">
+<li><p><strong>To reduce overfitting, reduce complexity.</strong></p></li>
+<li><p><strong>To reduce underfitting, increase complexity.</strong></p></li>
+</ul>
+<p>We will learn the above concepts in more detail in the next session.</p>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements:<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<p>The credits for the images used above are as follows.</p>
+<ul class="simple">
+<li><p>Image 1: <a class="reference external" href="https://hackernoon.com/%EF%B8%8F-big-challenge-in-deep-learning-training-data-31a88b97b282">https://hackernoon.com/️-big-challenge-in-deep-learning-training-data-31a88b97b282</a></p></li>
+<li><p>Image 2: Yunyoungmok, CC BY-SA 3.0 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0">https://creativecommons.org/licenses/by-sa/3.0</a>, via Wikimedia Commons</p></li>
+<li><p>Image 4: Thomas.haslwanter, CC BY-SA 3.0 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0">https://creativecommons.org/licenses/by-sa/3.0</a>, via Wikimedia Commons</p></li>
+<li><p>Image 5: <a class="reference external" href="https://rasbt.github.io/mlxtend/user_guide/general_concepts/gradient-optimization/">https://rasbt.github.io/mlxtend/user_guide/general_concepts/gradient-optimization/</a></p></li>
+<li><p>Image 6 and 9: <a class="reference external" href="https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15381-s06/www/nn.pdf">https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15381-s06/www/nn.pdf</a></p></li>
+<li><p>Image 7 and 18: <a class="reference external" href="https://medium.com/&#64;jayeshbahire/the-xor-problem-in-neural-networks-50006411840b">https://medium.com/&#64;jayeshbahire/the-xor-problem-in-neural-networks-50006411840b</a></p></li>
+<li><p>Image 8 and 15: <a class="github reference external" href="https://github.com/trekhleb/machine-learning-octave/tree/master/logistic-regression">trekhleb/machine-learning-octave</a></p></li>
+<li><p>Image 10: <a class="reference external" href="https://towardsdatascience.com/multi-layer-neural-networks-with-sigmoid-function-deep-learning-for-rookies-2-bf464f09eb7f">https://towardsdatascience.com/multi-layer-neural-networks-with-sigmoid-function-deep-learning-for-rookies-2-bf464f09eb7f</a></p></li>
+<li><p>Image 11(b), 12(b) and 13(b): <a class="reference external" href="http://hyperphysics.phy-astr.gsu.edu/hbase/index.html">http://hyperphysics.phy-astr.gsu.edu/hbase/index.html</a></p></li>
+<li><p>Image 14: <a class="reference external" href="https://www.researchgate.net/figure/A-hypothetical-example-of-Multilayer-Perceptron-Network_fig4_303875065">https://www.researchgate.net/figure/A-hypothetical-example-of-Multilayer-Perceptron-Network_fig4_303875065</a></p></li>
+<li><p>Image 16: <a class="reference external" href="https://towardsdatascience.com/derivative-of-the-sigmoid-function-536880cf918e">https://towardsdatascience.com/derivative-of-the-sigmoid-function-536880cf918e</a></p></li>
+<li><p>Image 17: <a class="reference external" href="https://sebastianraschka.com/faq/docs/logisticregr-neuralnet.html">https://sebastianraschka.com/faq/docs/logisticregr-neuralnet.html</a></p></li>
+<li><p>Image 19: Chabacano, CC BY-SA 4.0 <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0">https://creativecommons.org/licenses/by-sa/4.0</a>, via Wikimedia Commons</p></li>
+<li><p>Image 20: <a class="reference external" href="https://stats.stackexchange.com/questions/292283/general-question-regarding-over-fitting-vs-complexity-of-models?rq=1">https://stats.stackexchange.com/questions/292283/general-question-regarding-over-fitting-vs-complexity-of-models?rq=1</a></p></li>
+</ul>
+<p>The rest of the images are created by the author.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Workshop details</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Logistic%20Regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">A Hands-on Workshop series in Machine Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Hands-on Workshop series in Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-gentle-introduction-to-neural-networks">A Gentle Introduction to Neural Networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-dr-aashita-kesarwani">Instructor: Dr. Aashita Kesarwani</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-linear-regression">Multivariate Linear Regression</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-propagation">Forward propagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backward-propagation">Backward propagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-address-overfitting">How to address overfitting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements:</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aashita Kesarwani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
