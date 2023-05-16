@@ -6,4 +6,3 @@ root: intro
 chapters:
 - file: 1. A Gentle Introduction to Neural Networks
 - file: Logistic Regression
-- file: A Gentle Introduction to Neural Networks
